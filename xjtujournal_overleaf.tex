@@ -1,0 +1,370 @@
+%==============================================================================
+% 西安交通大学学报 LaTeX 模板 - Overleaf 优化版
+% XJTU Journal LaTeX Template - Optimized for Overleaf
+%
+% 重要：在 Overleaf 中请将编译器设置为 XeLaTeX
+% Menu -> Compiler -> XeLaTeX
+%==============================================================================
+
+\documentclass[12pt,a4paper,twoside]{article}
+
+%------------------------------------------------------------------------------
+% 宏包加载
+%------------------------------------------------------------------------------
+\usepackage[UTF8,fontset=ubuntu]{ctex}  % 使用ubuntu字体集，Overleaf兼容性更好
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+%------------------------------------------------------------------------------
+% 页面设置
+%------------------------------------------------------------------------------
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=2.5cm,
+    headheight=27pt
+}
+
+%------------------------------------------------------------------------------
+% 字号定义（严格按照中国标准字号）
+%------------------------------------------------------------------------------
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{26pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{22pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{14pt}{\baselineskip}\selectfont}  % 四号用于标题
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.5pt}{\baselineskip}\selectfont}
+
+%------------------------------------------------------------------------------
+% 字体样式定义（使用ctex的字体切换命令）
+%------------------------------------------------------------------------------
+% 注意：Overleaf使用Fandol字体，样式可能略有不同，但符合要求
+
+% 字体家族快捷命令
+\newcommand{\songti}{\CJKfamily{fandol}}  % 使用fandol的宋体风格
+\newcommand{\heiti}{\CJKfamily{fandolhei}}  % 黑体
+\newcommand{\kaishu}{\CJKfamily{fandol}}  % 楷体用宋体代替（fandol没有单独楷体）
+\newcommand{\fangsong}{\CJKfamily{fandol}}
+
+% 加粗快捷命令（确保黑体效果明显）
+\newcommand{\bfheiti}{\bfseries\heiti}
+\newcommand{\bfsongti}{\bfseries\songti}
+
+%------------------------------------------------------------------------------
+% 行距设置
+%------------------------------------------------------------------------------
+\onehalfspacing
+
+%------------------------------------------------------------------------------
+% 图表标题设置
+%------------------------------------------------------------------------------
+\captionsetup{
+    font={xiaowuhao,songti},
+    labelfont={xiaowuhao,songti},
+    textfont={xiaowuhao,songti},
+    skip=6pt,
+    labelformat=simple
+}
+
+%------------------------------------------------------------------------------
+% 页眉页脚
+%------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{
+    \xiaowuhao\songti
+    第56卷第x期\quad 2022年x月\\
+    \textrm{JOURNAL OF XI'AN JIAOTONG UNIVERSITY}\quad\textrm{Vol.56 No.x}\quad\textrm{Aug. 2022}
+}
+\fancyfoot[C]{
+    \xiaowuhao\songti
+    \thepage
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%------------------------------------------------------------------------------
+% 标题格式
+%------------------------------------------------------------------------------
+\usepackage{titlesec}
+
+% 一级标题：四号宋体居中
+\titleformat{\section}
+    {\xiaosihao\songti\centering\bfseries}
+    {\thesection}
+    {0pt}
+    {}
+
+\titleformat{\subsection}
+    {\wuhao\heiti\bfseries}
+    {\thesubsection}
+    {0pt}
+    {}
+
+%------------------------------------------------------------------------------
+% 参考文献设置
+%------------------------------------------------------------------------------
+\newcommand{\bibfont}{\xiaowuhao\songti}
+
+%------------------------------------------------------------------------------
+% 文档开始
+%------------------------------------------------------------------------------
+\begin{document}
+
+%===【期刊头部信息】===========================================================
+\begin{center}
+    \vspace{-1.5cm}
+    \xiaowuhao\songti
+    第56卷第x期\\
+    2022年x月\\
+    \textrm{JOURNAL OF XI'AN JIAOTONG UNIVERSITY}\\
+    \textrm{Vol.56 No.x}\\
+    \textrm{Aug. 2022}
+\end{center}
+
+\vspace{0.8cm}
+
+%===【中文标题】===============================================================
+\begin{center}
+    \erhao\heiti\bfseries
+    试验方法及研究方案
+\end{center}
+
+\vspace{0.4cm}
+
+%===【作者信息】===============================================================
+\begin{center}
+    \wuhao\songti
+    张三\textsuperscript{1}，李四\textsuperscript{1,2}，王五\textsuperscript{2}
+\end{center}
+
+\vspace{0.3cm}
+
+%===【作者单位】===============================================================
+\begin{center}
+    \xiaowuhao\songti
+    (1.西安交通大学能源与动力工程学院，陕西西安710049；\\
+    2.清华大学热科学系，北京100084)
+\end{center}
+
+\vspace{0.4cm}
+
+%===【中文摘要和关键词】=======================================================
+\noindent{\wuhao\heiti\bfseries 摘要}{\wuhao\songti
+为了研究喷嘴内部的空化流动及喷雾特性，采用可视化试验与数值模拟相结合的方法。喷嘴的锥度系数是影响喷嘴内部流动和喷雾特性的重要结构参数，但鲜有研究涉及锥度系数对喷嘴内部空化流动和喷雾特性的影响。采用简化喷嘴模型，通过高速摄像技术试验研究了不同锥度系数压力旋流喷嘴内部空化流动及外部喷雾形态，得到了喷嘴内部空化流动形态及外部喷雾锥角随喷嘴锥度系数的变化规律。结果表明：在喷孔长度不变的情况下，随着喷嘴锥度系数的增大，喷嘴内部的空化现象减弱；喷嘴锥度系数对外部喷雾形态有较大影响，较大的锥度系数会产生较小的喷雾锥角；随着雷诺数增大，喷雾锥角略微增大。研究结果对压力旋流喷嘴的结构设计和优化具有一定的指导意义。}
+
+\vspace{0.3cm}
+
+\noindent{\wuhao\heiti\bfseries 关键词：}{\wuhao\songti
+压力旋流喷嘴；空化流动；喷雾特性；锥度系数；可视化试验}
+
+\vspace{0.3cm}
+
+\noindent{\wuhao\heiti\bfseries 中图分类号：}{\wuhao\songti
+TK423}
+
+\vspace{0.2cm}
+
+\noindent{\wuhao\heiti\bfseries 文献标志码：}{\wuhao\songti
+A}
+
+\vspace{0.2cm}
+
+\noindent\xiaowuhao\songti
+\textrm{DOI: 10.7652/xjtuxb202208000}\\
+\textrm{文章编号：0253-987X(2022)08-0001-07}
+
+\vspace{0.6cm}
+
+%===【英文标题】===============================================================
+\begin{center}
+    \xiaosihao\heiti\bfseries
+    \textrm{Effects of the Taper Coefficient on the Internal Flow and Spray}\\
+    \textrm{Characteristics of a Pressure-Swirl Nozzle}
+\end{center}
+
+\vspace{0.4cm}
+
+%===【英文作者】===============================================================
+\begin{center}
+    \wuhao\textrm
+    ZHANG San\textsuperscript{1}, LI Si\textsuperscript{1,2}, WANG Wu\textsuperscript{2}
+\end{center}
+
+\vspace{0.3cm}
+
+%===【英文作者单位】===========================================================
+\begin{center}
+    \liuhao\textrm
+    (1. School of Energy and Power Engineering, Xi'an Jiaotong University,\\
+    Xi'an 710049, China; 2. Department of Thermal Science, Tsinghua University, Beijing 100084, China)
+\end{center}
+
+\vspace{0.4cm}
+
+%===【英文摘要】===============================================================
+\noindent{\wuhao\heiti\bfseries Abstract}{\wuhao\textrm
+In order to study the cavitating flow and spray characteristics inside the nozzle, a method combining visualization experiment and numerical simulation was adopted. The taper coefficient of the nozzle is an important structural parameter that affects the internal flow and spray characteristics of the nozzle. However, few studies have focused on the effect of the taper coefficient on the cavitating flow and spray characteristics of the nozzle. A simplified nozzle model was used to experimentally study the internal cavitating flow and external spray patterns of pressure-swirl nozzles with different taper coefficients by using high-speed photography technology. The variation laws of the internal cavitating flow pattern and external spray cone angle with the taper coefficient were obtained. The results show that under the condition of constant nozzle hole length, the cavitation phenomenon in the nozzle weakens with the increase of the taper coefficient. The taper coefficient has a great influence on the external spray pattern, and a larger taper coefficient will produce a smaller spray cone angle. With the increase of Reynolds number, the spray cone angle increases slightly. The research results have certain guiding significance for the structural design and optimization of pressure-swirl nozzles.}
+
+\vspace{0.3cm}
+
+\noindent{\wuhao\heiti\bfseries Key words：}{\wuhao\textrm
+pressure-swirl nozzle; cavitating flow; spray characteristic; taper coefficient; visualization experiment}
+
+\vspace{0.8cm}
+
+%===【正文开始 - 双栏排版】====================================================
+\singlespacing
+
+\begin{multicols}{2}
+
+%---【引言】--------------------------------------------------------------------
+\section{引言}
+
+压力旋流喷嘴广泛应用于燃油喷射、雾化干燥、农药喷洒等领域。喷嘴的内部流动特性直接影响其外部雾化性能，因此对喷嘴内部流动的研究具有重要意义。空化现象是喷嘴内部流动的重要特征，它会影响喷嘴的流量系数和喷雾特性。
+
+喷嘴的几何结构参数是影响内部流动和喷雾特性的重要因素。许多学者研究了喷嘴的长径比、喷孔直径等参数对流动特性的影响\cite{ref1}\cite{ref2}。然而，关于喷嘴锥度系数对空化流动和喷雾特性影响的研究较少。
+
+本文采用可视化试验与数值模拟相结合的方法，研究不同锥度系数压力旋流喷嘴内部空化流动及外部喷雾形态，揭示锥度系数对喷嘴内部流动和喷雾特性的影响规律。
+
+%---【试验方法及研究方案】------------------------------------------------------
+\section{试验方法及研究方案}
+
+\subsection{可视化试验台的搭建}
+
+为了研究喷嘴内部空化流动，搭建了可视化试验台。试验台主要由高压泵、流量计、压力表、高速摄像机和照明系统组成。试验介质为水，试验温度为25℃。
+
+\subsection{试验喷嘴的设计}
+
+设计了5个不同锥度系数的压力旋流喷嘴，锥度系数分别为0.5、1.0、1.5、2.0和2.5。喷嘴的其他几何参数保持不变，喷孔直径为1mm，喷孔长度为10mm。
+
+\subsection{试验工况}
+
+试验工况如表1所示。雷诺数的变化范围为5000~20000，覆盖了层流到湍流的过渡区域。
+
+\begin{table}[H]
+\centering
+\caption{试验工况参数}
+\label{tab:conditions}
+\begin{tabular}{cccc}
+\toprule
+工况 & 压力/MPa & 流量/(L·min\textsuperscript{-1}) & 雷诺数 \\
+\midrule
+1 & 0.5 & 2.3 & 5000 \\
+2 & 1.0 & 3.2 & 10000 \\
+3 & 1.5 & 3.9 & 15000 \\
+4 & 2.0 & 4.5 & 20000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%---【结果与讨论】--------------------------------------------------------------
+\section{结果与讨论}
+
+\subsection{喷嘴内部空化流动形态}
+
+图1给出了不同锥度系数喷嘴内部空化流动形态。从图中可以看出，随着锥度系数的增大，喷嘴内部的空化区域逐渐减小，空化强度减弱。
+
+\begin{figure}[H]
+\centering
+% 插入图片示例（占位符）
+% \includegraphics[width=0.45\columnwidth]{figure1.png}
+\rule{0.45\columnwidth}{3cm}
+\caption{喷嘴内部空化流动形态}
+\label{fig:cavitation}
+\end{figure}
+
+\subsection{喷雾锥角变化规律}
+
+图2给出了喷雾锥角随锥度系数的变化关系。可以看出，喷雾锥角随锥度系数的增大而减小。这是因为较大的锥度系数使得流体在喷嘴内部的旋转速度减小，从而导致喷雾锥角减小。
+
+\begin{figure}[H]
+\centering
+% 插入图片示例（占位符）
+% \includegraphics[width=0.45\columnwidth]{figure2.png}
+\rule{0.45\columnwidth}{3cm}
+\caption{喷雾锥角随锥度系数的变化}
+\label{fig:spray_angle}
+\end{figure}
+
+表2给出了不同工况下喷雾锥角的测量结果。
+
+\begin{table}[H]
+\centering
+\caption{不同工况下喷雾锥角测量结果}
+\label{tab:spray_results}
+\begin{tabular}{ccccc}
+\toprule
+锥度系数 & 工况1 & 工况2 & 工况3 & 工况4 \\
+\midrule
+0.5 & 78.5 & 79.2 & 80.1 & 80.8 \\
+1.0 & 72.3 & 73.1 & 73.8 & 74.5 \\
+1.5 & 65.7 & 66.4 & 67.2 & 67.9 \\
+2.0 & 58.9 & 59.5 & 60.2 & 60.8 \\
+2.5 & 52.3 & 52.9 & 53.5 & 54.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%---【结论】--------------------------------------------------------------------
+\section{结论}
+
+本文采用可视化试验方法研究了不同锥度系数压力旋流喷嘴内部空化流动及外部喷雾特性，得到以下结论：
+
+(1) 在喷孔长度不变的情况下，随着喷嘴锥度系数的增大，喷嘴内部的空化现象减弱，空化区域减小。
+
+(2) 喷嘴锥度系数对外部喷雾形态有较大影响，较大的锥度系数会产生较小的喷雾锥角。
+
+(3) 随着雷诺数增大，喷雾锥角略微增大，但变化幅度较小。
+
+(4) 研究结果对压力旋流喷嘴的结构设计和优化具有一定的指导意义。
+
+\end{multicols}
+
+\vspace{0.5cm}
+
+%===【参考文献】================================================================
+\begingroup
+\xiaowuhao\songti
+\begin{thebibliography}{99}
+
+\bibitem{ref1}
+\textbf{SOM S K, AGGARWAL M L}. Spray behavior and air entrainment in plain-orifice sprays[J]. Physics of Fluids, 1991, 3(12): 2955-2964.
+
+\bibitem{ref2}
+\textbf{KIM J Y, LEE S Y}. Dependence of spraying performance on the internal flow pattern in pressure-swirl atomizers[J]. Atomization and Sprays, 2001, 11(6): 615-632.
+
+\bibitem{ref3}
+\textbf{王军，刘卫东，张三}. 喷嘴内部空化流动的数值模拟研究[J]. 工程热物理学报，2015，36(3): 543-548.
+
+\bibitem{ref4}
+\textbf{李明，赵四}. 压力旋流喷嘴雾化特性的试验研究[J]. 西安交通大学学报，2018，52(5): 123-128.
+
+\bibitem{ref5}
+\textbf{ZHANG W, NIU H, ZHANG X}. Experimental investigation on the cavitation flow inside a pressure-swirl nozzle[J]. Experimental Thermal and Fluid Science, 2020, 118: 110188.
+
+\end{thebibliography}
+\endgroup
+
+\end{document}
