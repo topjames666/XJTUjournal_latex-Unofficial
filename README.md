@@ -41,7 +41,7 @@ xelatex xjtujournal_latest.tex  # 编译两次以生成正确的引用和页码
 - `xjtujournal_template.tex` - 包含完整示例内容
 - `xjtujournal_standard.tex` - 标准版本
 - `xjtujournal_overleaf.tex` - Overleaf 优化版本
-- `xjtujournal_final.tex` - 最终版本
+- `xjtujournal_v1.tex` - v1 版本
 
 ### 文档文件
 - `README.md` - 本使用说明文档
