@@ -1,18 +1,15 @@
 %==============================================================================
-% 西安交通大学学报 LaTeX 模板 - v8.0版
-% XJTU Journal LaTeX Template - v8.0 Version
+% 西安交通大学学报 LaTeX 模板 - v10.0版
+% XJTU Journal LaTeX Template - v10.0 Version
 %
 % 编译器:XeLaTeX
 % Menu -> Compiler -> XeLaTeX
 %
 % 修正内容:
-%   1. 调整首页页眉左右栏,使第二行与中间栏英文同一行
-%   2. 使用\\[5pt]和\\[-23pt]实现行对齐
-%   3. 作者信息与学校信息间距调整为5磅
-%   4. 论文题目置于页眉和作者信息中间位置
-%   5. 参考文献改为双栏排版
-%   6. 参考文献人名不加粗
-%   7. 保持所有其他字体和格式要求不变
+%   1. 使用 newtxtext,newtxmath 宏包提供更粗的英文字体
+%   2. ctex 使用 fontset=fandol 确保中文字体正常
+%   3. 移除 amsmath,amssymb（newtxmath 已包含）
+%   4. 英文标题使用 \bfseries 实现加粗效果
 %==============================================================================
 
 \documentclass[12pt,a4paper,twoside]{article}
@@ -20,15 +17,12 @@
 %------------------------------------------------------------------------------
 % 宏包加载
 %------------------------------------------------------------------------------
-\usepackage[UTF8,fontset=ubuntu]{ctex}
-\usepackage{times}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{newtxtext,newtxmath}
 \usepackage{setspace}
 \usepackage{geometry}
 \usepackage{multicol}
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{float}
@@ -203,7 +197,7 @@
 
 %===【使用首页页眉样式】=======================================================
 \thispagestyle{firstpage}
-\vspace*{\dimexpr 0.2cm - \topskip \relax} 
+\vspace*{\dimexpr 0.2cm - \topskip \relax}
 %===【中文标题】===============================================================
 % ✅ v6修正:将标题置于页眉和作者信息中间位置
 \begin{center}
@@ -220,7 +214,7 @@
 \end{center}
 % 1. 删除手动分隔线（关键：去掉文本行占用的空间）
 % 2. 用负\vspace抵消两个center环境的默认间距（-16pt = -topsep -bottomsep）
-\vspace{-16pt}  
+\vspace{-16pt}
 % 学校信息区域
 \begin{center}
     \vspace{0pt}  % 保持你的0设置即可
@@ -277,7 +271,7 @@
 
 %===【英文摘要】===============================================================
 \noindent{\wuhao\heiti\bfseries Abstract:}\wuhao\textrm
-\textrm{In order to study the cavitating flow and spray characteristics inside the nozzle, a method combining visualization experiment and numerical simulation was adopted. The taper coefficient of the nozzle is an important structural parameter that affects the internal flow and spray characteristics of the nozzle. However, few studies have focused on the effect of the taper coefficient on the cavitating flow and spray characteristics of the nozzle. A simplified nozzle model was used to experimentally study the internal cavitating flow and external spray patterns of pressure-swirl nozzles with different taper coefficients by using high-speed photography technology. The variation laws of the internal cavitating flow pattern and external spray cone angle with the taper coefficient were obtained. The results show that under the condition of constant nozzle hole length, the cavitation phenomenon in the nozzle weakens with the increase of the taper coefficient. The taper coefficient has a great influence on the external spray pattern, and a larger taper coefficient will produce a smaller spray cone angle. With the increase of Reynolds number, the spray cone angle increases slightly. The research results have certain guiding significance for the structural design and optimization of pressure-swirl nozzles.}
+\textrm{In order to study the cavitating flow and spray characteristics inside the nozzle, a method combining visualization experiment and numerical simulation was adopted. The taper coefficient of the nozzle is an important structural parameter that affects the internal flow and spray characteristics of the nozzle. However, few studies have focused on the effect of the taper coefficient on the cavitating flow and spray characteristics of the nozzle. A simplified nozzle model was used to experimentally study the internal cavitating flow and external spray patterns of pressure-swirl nozzles with different taper coefficients by using high-speed photography technology. The variation laws of the internal cavitating flow pattern and external spray cone angle with the taper coefficient were obtained. The results show that under the condition of constant nozzle hole length, the cavitation phenomenon in the nozzle weakens with the increase of the taper coefficient. The taper coefficient has a great influence on the external spray pattern, and a larger taper coefficient will produce a smaller spray cone angle. With the increase of Reynolds number, the spray cone angle increases slightly. The research results have certain guiding significance for the structural design and optimization of pressure-swirl nozzels.}
 
 \vspace{0.3cm}
 
@@ -321,7 +315,7 @@
 \small
 \begin{tabular}{cccc}
 \toprule
-工况 & 压力/\textrm{MPa} & 流量/(\textrm{L·min}\textsuperscript{-1}) & 雷诺数 \\
+工况 & 压力/MPa & 流量/(L·min)\textsuperscript{-1} & 雷诺数 \\
 \midrule
 1 & 0.5 & 2.3 & 5000 \\
 2 & 1.0 & 3.2 & 10000 \\
@@ -395,16 +389,16 @@
 
 %===【参考文献】================================================================
 % ✅ v9修正:参考文献改为双栏排版,人名不加粗
-\begin{multicols}{2}
 \begingroup
 \xiaowuhao\songti
+\begin{multicols}{2}
 \begin{thebibliography}{99}
 
 \bibitem{ref1}
-\textrm{SOM S K, AGGARWAL M L. Spray behavior and air entrainment in plain-orifice sprays[J]. Physics of Fluids, 1991, 3(12): 2955-2964.}
+SOM S K, AGGARWAL M L. Spray behavior and air entrainment in plain-orifice sprays[J]. Physics of Fluids, 1991, 3(12): 2955-2964.
 
 \bibitem{ref2}
-\textrm{KIM J Y, LEE S Y. Dependence of spraying performance on the internal flow pattern in pressure-swirl atomizers[J]. Atomization and Sprays, 2001, 11(6): 615-632.}
+KIM J Y, LEE S Y. Dependence of spraying performance on the internal flow pattern in pressure-swirl atomizers[J]. Atomization and Sprays, 2001, 11(6): 615-632.
 
 \bibitem{ref3}
 王军，刘卫东，张三. 喷嘴内部空化流动的数值模拟研究[J]. 工程热物理学报，2015，36(3): 543-548.
@@ -413,10 +407,10 @@
 李明，赵四. 压力旋流喷嘴雾化特性的试验研究[J]. 西安交通大学学报，2018，52(5): 123-128.
 
 \bibitem{ref5}
-\textrm{ZHANG W, NIU H, ZHANG X. Experimental investigation on the cavitation flow inside a pressure-swirl nozzle[J]. Experimental Thermal and Fluid Science, 2020, 118: 110188.}
+ZHANG W, NIU H, ZHANG X. Experimental investigation on the cavitation flow inside a pressure-swirl nozzle[J]. Experimental Thermal and Fluid Science, 2020, 118: 110188.
 
 \end{thebibliography}
-\endgroup
 \end{multicols}
+\endgroup
 
 \end{document}
