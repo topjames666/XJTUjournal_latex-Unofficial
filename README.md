@@ -11,9 +11,16 @@
 ### 本地编译
 **必须使用 XeLaTeX 编译**（不是 PDFLaTeX）
 
+**v10 版本（推荐）：**
 ```bash
-xelatex xjtujournal_template.tex
-xelatex xjtujournal_template.tex  # 编译两次以生成正确的引用和页码
+xelatex xjtujournal_v10.tex
+xelatex xjtujournal_v10.tex  # 编译两次以生成正确的引用和页码
+```
+
+**v9 版本（稳定）：**
+```bash
+xelatex xjtujournal_v9.tex
+xelatex xjtujournal_v9.tex
 ```
 
 ### Overleaf 编译
@@ -26,12 +33,46 @@ xelatex xjtujournal_template.tex  # 编译两次以生成正确的引用和页�
 
 ## 文件说明
 
+### 推荐模板
+- **`xjtujournal_v10.tex`** - 最新版本（推荐，使用增强英文字体）
+- **`xjtujournal_v9.tex`** - 稳定版本（标准 Times 字体）
+
+### 其他模板
 - `xjtujournal_template.tex` - 主模板文件（包含完整示例内容）
-- `example_custom.tex` - 简化模板（便于快速修改，**推荐在Overleaf使用**）
+- `xjtujournal_standard.tex` - 标准版本
+- `xjtujournal_overleaf.tex` - Overleaf 优化版本
+- `example_custom.tex` - 简化模板（便于快速修改）
+
+### 文档文件
 - `OVERLEAF_GUIDE.md` - Overleaf 使用指南
 - `README.md` - 本使用说明文档
 - `INSTALL.md` - LaTeX 安装指南
 - `PROJECT_SUMMARY.md` - 项目总结
+- `CLAUDE.md` - AI 助手项目说明文档
+
+## 版本选择指南
+
+### v10（推荐）- 增强英文字体
+**适用场景：**
+- 需要更粗的英文标题字体
+- 追求更接近原模板的视觉效果
+- 本地编译或 Overleaf 使用
+
+**特点：**
+- 使用 `newtxtext,newtxmath` 宏包，英文字体更粗
+- 使用 `fontset=fandol` 确保中文字体兼容
+- 简化字体命令（不需要 `\textrm{}` 包装）
+
+### v9（稳定）- 标准字体
+**适用场景：**
+- 需要最广泛的兼容性
+- 标准的 Times New Roman 字体
+- 作为备用方案
+
+**特点：**
+- 使用 `times` 宏包，兼容性最好
+- 标准的英文字体粗细
+- 可靠的跨平台支持
 
 ## 模板特点
 
@@ -104,17 +145,32 @@ xelatex xjtujournal_template.tex  # 编译两次以生成正确的引用和页�
 
 % 英文标题
 \begin{center}
-    \xiaosihao\heiti
-    \textrm{Your English Title}
+    \xiaosihao\bfseries
+    Your English Title
 \end{center}
 
 % 英文摘要
-\noindent\textbf{\wuhao\heiti Abstract}\wuhao\textrm
+\noindent{\wuhao\heiti\bfseries Abstract:}\wuhao
 Your abstract content...
 
 % 英文关键词
-\noindent\textbf{\wuhao\heiti Key words：}\wuhao\textrm
+\noindent{\wuhao\heiti\bfseries Key words:}\wuhao
 keyword1; keyword2; keyword3
+```
+
+**注意：v10 版本不需要 `\textrm{}` 包装，英文内容直接输入即可。**
+
+**如果使用 v9 版本，英文标题需要使用：**
+```latex
+% 英文标题（v9）
+\begin{center}
+    \xiaosihao\bfseries
+    \textrm{Your English Title}
+\end{center}
+
+% 英文摘要（v9）
+\noindent{\wuhao\heiti\bfseries Abstract:}\wuhao\textrm
+\textrm{Your abstract content...}
 ```
 
 ### 添加正文内容
@@ -214,23 +270,31 @@ E = mc^2
 
 ### 添加参考文献
 
-参考文献列表在文档末尾：
+参考文献列表在文档末尾，采用双栏排版：
 
+**v10 版本（推荐）：**
 ```latex
+\begingroup
+\xiaowuhao\songti
+\begin{multicols}{2}
 \begin{thebibliography}{99}
 
 \bibitem{ref1}
-\textbf{作者姓名}. 文章标题[J]. 期刊名称，年份，卷(期): 起始页码-结束页码.
+作者姓名. 文章标题[J]. 期刊名称，年份，卷(期): 起始页码-结束页码.
 
 \bibitem{ref2}
-\textbf{Author Name}. Article Title[J]. Journal Name, Year, Volume(Issue): Start Page-End Page.
+Author Name. Article Title[J]. Journal Name, Year, Volume(Issue): Start Page-End Page.
 
 \end{thebibliography}
+\end{multicols}
+\endgroup
 ```
 
-注意：
-- 中文文献：作者姓名用黑体 `\textbf{}`
-- 英文文献：作者姓名用黑体 `\textbf{}`
+**注意：**
+- 参考文献使用双栏排版
+- 小五号宋体
+- 作者姓名**不加粗**
+- v10 版本不需要 `\textrm{}` 包装
 - 使用 `\cite{ref1}` 在正文中引用
 
 ## 格式规范总结
@@ -260,12 +324,18 @@ E = mc^2
 
 ## 常见问题
 
-### Q1: 编译时提示找不到中文字体
+### Q1: 如何选择使用 v10 还是 v9？
+
+**A:** 推荐使用 v10 版本，它的英文字体更粗，更接近原模板效果。如果遇到兼容性问题，可以回退到 v9 版本。
+
+### Q2: 编译时提示找不到中文字体
 
 **A:** 确保系统已安装中文字体：
 - Windows: 通常预装宋体、黑体、楷体
 - macOS: 需要从 Windows 复制字体或使用系统自带的中文字体
 - Linux: 安装 `fonts-wqy` 系列
+
+v10 版本使用 `fontset=fandol`，通常会自动处理中文字体。
 
 修改字体设置（如需要）：
 ```latex
@@ -273,7 +343,7 @@ E = mc^2
 \setCJKsansfont{SimHei}      % 黑体
 ```
 
-### Q2: 图片不显示
+### Q3: 图片不显示
 
 **A:** 确保：
 1. 图片文件与 .tex 文件在同一目录
@@ -281,15 +351,15 @@ E = mc^2
 3. 图片文件名不要包含中文和空格
 4. 编译时没有错误提示
 
-### Q3: 参考文献引用显示为 [?]
+### Q4: 参考文献引用显示为 [?]
 
 **A:** 需要编译两次：
 ```bash
-xelatex filename.tex
-xelatex filename.tex
+xelatex xjtujournal_v10.tex
+xelatex xjtujournal_v10.tex
 ```
 
-### Q4: 如何调整页边距
+### Q5: 如何调整页边距
 
 修改 geometry 设置：
 ```latex
@@ -301,7 +371,7 @@ xelatex filename.tex
 }
 ```
 
-### Q5: 如何添加更多作者
+### Q6: 如何添加更多作者
 
 ```latex
 张三\textsuperscript{1}，李四\textsuperscript{1,2}，王五\textsuperscript{2}，赵六\textsuperscript{3}
@@ -312,9 +382,11 @@ xelatex filename.tex
 - 英文作者之间用逗号 `,` 分隔
 - 使用 `\textsuperscript{}` 添加单位编号
 
-### Q6: 标题太长怎么办
+### Q7: 标题太长怎么办
 
 如果标题过长，可以手动换行：
+
+**中文标题：**
 ```latex
 \begin{center}
     \erhao\heiti
@@ -323,10 +395,19 @@ xelatex filename.tex
 \end{center}
 ```
 
-英文标题同理：
+**英文标题（v10）：**
 ```latex
 \begin{center}
-    \xiaosihao\heiti
+    \xiaosihao\bfseries
+    First Line of Title\\
+    Second Line of Title
+\end{center}
+```
+
+**英文标题（v9）：**
+```latex
+\begin{center}
+    \xiaosihao\bfseries
     \textrm{First Line of Title}\\
     \textrm{Second Line of Title}
 \end{center}
@@ -360,9 +441,25 @@ xelatex filename.tex
 
 ## 技术支持
 
+### 版本更新
+- **v10**（当前推荐）：增强英文字体粗细，更接近原模板
+- **v9**（稳定版本）：标准 Times 字体，兼容性最好
+
+### 使用建议
+1. 新用户推荐使用 v10 版本
+2. 如遇编译问题，可尝试 v9 版本
+3. 两个版本功能完全相同，仅英文字体粗细不同
+
+### 常见问题排查
 如有问题，请检查：
 1. 是否使用 XeLaTeX 编译
 2. 是否安装了所有必需的宏包
 3. 是否有语法错误
+4. 是否按照示例正确使用版本对应的命令
+
+### 获取帮助
+- 查看 [CLAUDE.md](CLAUDE.md) 了解项目技术细节
+- 查看 [INSTALL.md](INSTALL.md) 了解 LaTeX 安装
+- 查看 [OVERLEAF_GUIDE.md](OVERLEAF_GUIDE.md) 了解 Overleaf 使用
 
 祝您投稿顺利！
