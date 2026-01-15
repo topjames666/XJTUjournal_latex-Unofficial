@@ -47,9 +47,7 @@ xelatex xjtujournal_latest.tex  # 编译两次以生成正确的引用和页码
 - `README.md` - 本使用说明文档
 - `INSTALL.md` - LaTeX 安装指南
 - `OVERLEAF_GUIDE.md` - Overleaf 使用指南
-- `CLAUDE.md` - 项目技术文档
 - `PROJECT_SUMMARY.md` - 项目总结
-- `PRD_Word转LaTeX模板转换器.md` - 产品需求文档
 
 ## 快速开始
 
@@ -426,7 +424,6 @@ xelatex xjtujournal_latest.tex
 3. 是否有语法错误
 
 ### 获取帮助
-- 查看 [CLAUDE.md](CLAUDE.md) 了解项目技术细节
 - 查看 [INSTALL.md](INSTALL.md) 了解 LaTeX 安装
 - 查看 [OVERLEAF_GUIDE.md](OVERLEAF_GUIDE.md) 了解 Overleaf 使用
 
