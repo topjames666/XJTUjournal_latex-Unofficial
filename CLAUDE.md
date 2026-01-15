@@ -34,7 +34,8 @@ This is a **Word to LaTeX Template Converter** for Xi'an Jiaotong University Jou
 ## LaTeX Template Files
 
 ### Current Templates
-- **xjtujournal_v9.tex** - Latest stable version (recommended)
+- **xjtujournal_v10.tex** - Latest stable version (recommended, with enhanced English font weight)
+- **xjtujournal_v9.tex** - Previous stable version (standard Times font)
 - **xjtujournal_template.tex** - Main template with full example content
 - **xjtujournal_standard.tex** - Standard version
 - **xjtujournal_overleaf.tex** - Optimized for Overleaf
@@ -43,9 +44,15 @@ This is a **Word to LaTeX Template Converter** for Xi'an Jiaotong University Jou
 ### Historical Versions (v2-v8)
 Previous iterations preserved for reference. See V2-V5_MODIFICATION_SUMMARY.md for changelog.
 
-## Current Template Features (v9)
+## Current Template Features (v10)
 
-The v9 template includes:
+The v10 template includes all v9 features plus enhanced English typography:
+
+### v10 Enhancements
+- ✅ Uses `newtxtext,newtxmath` for bolder English font weight
+- ✅ Better compatibility with `fontset=fandol` for Chinese fonts
+- ✅ Simplified font commands (no nested `\textrm{}` needed)
+- ✅ Improved bibliography formatting
 
 ### Page Layout
 - ✅ Two-column body text (`multicols` package)
@@ -63,10 +70,11 @@ The v9 template includes:
 - ✅ Font size commands: `\erhao`, `\xiaosihao`, `\wuhao`, `\xiaowuhao`, `\liuhao`
 - ✅ Font family commands: `\songti`, `\heiti`, `\kaishu`
 - ✅ Uses fandol font set for cross-platform compatibility
+- ✅ Uses newtxtext/newtxmath for enhanced English font weight
 
 ### Content Formatting
 - ✅ Chinese title: 2号黑体居中
-- ✅ English title: 4号黑体居中
+- ✅ English title: 4号加粗 (bolder with newtxtext)
 - ✅ Author info: 5号宋体 with superscript affiliations
 - ✅ Abstract/Keywords: 5号黑体 label + 5号楷体 content
 - ✅ Section headers: 一级标题 (4号宋体), 二级标题 (5号黑体)
@@ -80,7 +88,8 @@ The v9 template includes:
 ### Bibliography
 - ✅ 双栏排版 (dual-column layout)
 - ✅ 小5号宋体
-- ✅ Author names NOT bolded (v9 correction)
+- ✅ Author names NOT bolded
+- ✅ Clean font formatting (no `\textrm{}` wrapper needed)
 
 ## Planned Word Converter (Not Yet Implemented)
 
@@ -119,17 +128,14 @@ LaTeX File Output
 ### LaTeX (Current - Template)
 **Document Class:** `\documentclass[12pt,a4paper,twoside]{article}`
 
-**Required Packages:**
+**Required Packages (v10 with newtxtext,newtxmath):**
 ```latex
-\usepackage[UTF8,fontset=ubuntu]{ctex}   % Chinese support (fandol fonts)
-\usepackage{times}                         % Times New Roman
+\usepackage[UTF8,fontset=fandol]{ctex}    % Chinese support (fandol fonts)
+\usepackage{newtxtext,newtxmath}           % Enhanced English & math fonts
 \usepackage{setspace}                       % Line spacing
 \usepackage{geometry}                       % Page layout
 \usepackage{multicol}                       % Two-column layout
 \usepackage{graphicx}                       % Images
-\usepackage{amsmath}                        % Math formulas
-\usepackage{amsfonts}
-\usepackage{amssymb}
 \usepackage{booktabs}                       % Table formatting
 \usepackage{caption}                        % Caption formatting
 \usepackage{float}                          % Float placement
@@ -139,6 +145,16 @@ LaTeX File Output
 \usepackage{lastpage}
 \usepackage{indentfirst}
 \usepackage{titlesec}                       % Section formatting
+```
+
+**Alternative (v9 with times package):**
+```latex
+\usepackage[UTF8,fontset=ubuntu]{ctex}    % Chinese support
+\usepackage{times}                          % Standard Times New Roman
+\usepackage{amsmath}                        % Math formulas
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% ... (other packages same as v10)
 ```
 
 **Compiler:** XeLaTeX (required for Chinese support)
@@ -154,10 +170,16 @@ LaTeX File Output
 
 ### LaTeX Template Development
 
-**Compile the template:**
+**Compile the template (v10 recommended):**
+```bash
+xelatex xjtujournal_v10.tex
+xelatex xjtujournal_v10.tex  # Second pass for references
+```
+
+**Alternative (v9 standard Times font):**
 ```bash
 xelatex xjtujournal_v9.tex
-xelatex xjtujournal_v9.tex  # Second pass for references
+xelatex xjtujournal_v9.tex
 ```
 
 **Clean auxiliary files:**
@@ -166,9 +188,13 @@ rm -f *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg
 ```
 
 **On Overleaf:**
-1. Upload template file
+1. Upload template file (v10 or v9)
 2. Menu → Compiler → XeLaTeX → Save
 3. Click Recompile
+
+**Version Selection Guide:**
+- **v10**: Use when you need bolder English fonts (enhanced newtxtext)
+- **v9**: Use when you need standard Times fonts or better compatibility
 
 ### Python Converter Development (When Implementing)
 
@@ -209,6 +235,8 @@ pip install python-docx pylabic jinja2
 - **Figures**: `figure` environment with `\xiaowuhao\songti` caption style
 - **Tables**: `table` environment with `booktabs` rules, `\wuhao\kaishu` caption
 - **Line spacing**: `\singlespacing` for document (set globally)
+- **English font (v10)**: No `\textrm{}` wrapper needed (newtxtext handles it)
+- **English font (v9)**: Use `\textrm{...}` for Times New Roman content
 
 ## Document Structure Requirements
 
@@ -229,6 +257,9 @@ The converter (when implemented) must recognize and transform:
 1. **Cross-platform Compatibility**: Uses fandol fonts via `ctex` package for consistent rendering
 2. **XeLaTeX Required**: Must use XeLaTeX compiler (not PDFLaTeX) for Chinese support
 3. **Overleaf Compatible**: Templates work on Overleaf with proper compiler settings
+4. **Version Choice**:
+   - **v10**: Enhanced English font weight (newtxtext,newtxmath)
+   - **v9**: Standard compatibility (times package)
 
 ### For Word Converter (When Implementing)
 1. **Chinese Typography**: Precise Chinese font handling required
@@ -259,3 +290,31 @@ According to the PRD, Word converter development should follow:
 - Generate compilable LaTeX files
 - Output PDF matches journal formatting requirements
 - Handle math formulas, figures, tables, and references correctly
+
+## Version History
+
+### v10 (Current - Recommended)
+**Enhanced English Typography**
+- Uses `newtxtext,newtxmath` for bolder English font weight
+- `fontset=fandol` for Chinese font compatibility
+- Simplified font commands (no `\textrm{}` wrapper needed)
+- Improved bibliography formatting
+- Better visual match to original journal template
+
+### v9 (Stable Alternative)
+**Standard Times Font**
+- Uses `times` package for English content
+- `fontset=ubuntu` for Chinese fonts
+- Reliable compatibility across platforms
+- English title uses simplified `\bfseries` command
+
+### v8
+**Layout Refinements**
+- Header alignment improvements
+- Spacing adjustments
+- Bibliography dual-column layout
+
+### v2-v7
+**Iterative Development**
+- Progressive format refinements
+- See V2-V5_MODIFICATION_SUMMARY.md for details
