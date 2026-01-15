@@ -4,17 +4,87 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Word to LaTeX Template Converter** for Xi'an Jiaotong University Journal (西安交通大学学报). The project converts Word format submission templates to LaTeX format, enabling researchers to use LaTeX's powerful typesetting while maintaining exact compliance with the journal's formatting requirements.
+This is a **Word to LaTeX Template Converter** for Xi'an Jiaotong University Journal (西安交通大学学报). The project consists of two parts:
 
-**Current Status**: Planning phase - no code has been written yet. The project is defined by the PRD (PRD_Word转LaTeX模板转换器.md) with complete specifications.
+1. **LaTeX Template (✅ Completed)** - A fully functional LaTeX template matching the journal's formatting requirements
+2. **Word-to-LaTeX Converter (⏳ Not Implemented)** - An automated converter tool (planned)
+
+**Current Status**: LaTeX template is complete and production-ready. The Word converter is planned but not yet implemented.
 
 ## Document Reference
 
-- **PRD**: `PRD_Word转LaTeX模板转换器.md` - Complete product requirements document in Chinese
+### Core Documents
+- **PRD**: `PRD_Word转LaTeX模板转换器.md` - Product requirements document (Chinese)
 - **Source Template**: `本刊投稿格式模板.docx` - Word template to convert (213KB)
-- **Reference PDF**: `本刊投稿格式模板.pdf` - Visual reference (4 pages, 656KB)
+- **Reference PDF**: `本刊投稿格式模板.pdf` - Visual reference (4 pages)
 
-## Planned Architecture
+### User Documentation
+- **README.md** - Complete user guide with examples and troubleshooting
+- **INSTALL.md** - LaTeX installation guide (macOS, Windows, Linux)
+- **OVERLEAF_GUIDE.md** - Overleaf-specific usage instructions
+- **QUICKSTART.md** - Quick start guide
+- **PROJECT_SUMMARY.md** - Project completion summary
+
+### Development Documentation
+- **开发规范文档.md** - Initial development specifications
+- **开发规范文档2-5_*.md** - Iterative refinement documents
+- **V2-V5_MODIFICATION_SUMMARY.md** - Version history and changelogs
+- **v5.1修改说明.md** - v5.1 specific changes
+
+## LaTeX Template Files
+
+### Current Templates
+- **xjtujournal_v9.tex** - Latest stable version (recommended)
+- **xjtujournal_template.tex** - Main template with full example content
+- **xjtujournal_standard.tex** - Standard version
+- **xjtujournal_overleaf.tex** - Optimized for Overleaf
+- **example_custom.tex** - Simplified template for quick customization
+
+### Historical Versions (v2-v8)
+Previous iterations preserved for reference. See V2-V5_MODIFICATION_SUMMARY.md for changelog.
+
+## Current Template Features (v9)
+
+The v9 template includes:
+
+### Page Layout
+- ✅ Two-column body text (`multicols` package)
+- ✅ Custom page geometry (left/right: 1.8cm, top/bottom: 2.54cm)
+- ✅ First page special header with journal info
+- ✅ Subsequent pages with paper title
+
+### Header Format (First Page)
+- ✅ Left: Chinese volume/issue info (5号宋体)
+- ✅ Center: Journal name (中英文, 4号黑体)
+- ✅ Right: English volume/issue info (5号Times)
+- ✅ Proper alignment using `\\[5pt]` and `\\[-23pt]`
+
+### Typography System
+- ✅ Font size commands: `\erhao`, `\xiaosihao`, `\wuhao`, `\xiaowuhao`, `\liuhao`
+- ✅ Font family commands: `\songti`, `\heiti`, `\kaishu`
+- ✅ Uses fandol font set for cross-platform compatibility
+
+### Content Formatting
+- ✅ Chinese title: 2号黑体居中
+- ✅ English title: 4号黑体居中
+- ✅ Author info: 5号宋体 with superscript affiliations
+- ✅ Abstract/Keywords: 5号黑体 label + 5号楷体 content
+- ✅ Section headers: 一级标题 (4号宋体), 二级标题 (5号黑体)
+- ✅ Body text: 5号宋体, single spacing
+
+### Figures & Tables
+- ✅ Figure captions: 小5号宋体
+- ✅ Table captions: 5号楷体
+- ✅ Three-line tables using `booktabs`
+
+### Bibliography
+- ✅ 双栏排版 (dual-column layout)
+- ✅ 小5号宋体
+- ✅ Author names NOT bolded (v9 correction)
+
+## Planned Word Converter (Not Yet Implemented)
+
+If implementing the Word-to-LaTeX converter, the planned architecture is:
 
 ```
 Word Document Input
@@ -38,8 +108,7 @@ LaTeX Generator Module
 LaTeX File Output
 ```
 
-## Planned Core Components
-
+### Planned Components
 - `word_to_latex.py` - Main converter class `WordToLatexConverter`
 - `format_mapper.py` - Format mapping logic
 - `latex_generator.py` - LaTeX code generation
@@ -47,25 +116,72 @@ LaTeX File Output
 
 ## Technology Stack
 
-### Python Dependencies (Proposed)
+### LaTeX (Current - Template)
+**Document Class:** `\documentclass[12pt,a4paper,twoside]{article}`
+
+**Required Packages:**
+```latex
+\usepackage[UTF8,fontset=ubuntu]{ctex}   % Chinese support (fandol fonts)
+\usepackage{times}                         % Times New Roman
+\usepackage{setspace}                       % Line spacing
+\usepackage{geometry}                       % Page layout
+\usepackage{multicol}                       % Two-column layout
+\usepackage{graphicx}                       % Images
+\usepackage{amsmath}                        % Math formulas
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}                       % Table formatting
+\usepackage{caption}                        % Caption formatting
+\usepackage{float}                          % Float placement
+\usepackage{array}                          % Table arrays
+\usepackage{hyperref}                       % Hyperlinks
+\usepackage{fancyhdr}                       % Headers/footers
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{titlesec}                       % Section formatting
+```
+
+**Compiler:** XeLaTeX (required for Chinese support)
+
+### Python (Planned - Converter)
 - **python-docx** - Primary Word document parsing
 - **docx2python** - Alternative for format extraction
 - **mammoth** - Optional Word to HTML/Markdown conversion
 - **pylatex** - LaTeX generation from Python
 - **jinja2** - Template engine (if needed)
 
-### LaTeX Requirements
-All generated LaTeX documents must include:
-```latex
-\documentclass[12pt,a4paper]{article}
-\usepackage[UTF8]{ctex}      % Chinese support
-\usepackage{times}            % Times New Roman font
-\usepackage{setspace}         % Line spacing
-\usepackage{graphicx}         % Images
-\usepackage{amsmath}          % Math formulas
-\usepackage{booktabs}         % Table formatting
-\usepackage{geometry}         % Page layout
-\usepackage{hyperref}         % Hyperlinks
+## Development Commands
+
+### LaTeX Template Development
+
+**Compile the template:**
+```bash
+xelatex xjtujournal_v9.tex
+xelatex xjtujournal_v9.tex  # Second pass for references
+```
+
+**Clean auxiliary files:**
+```bash
+rm -f *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg
+```
+
+**On Overleaf:**
+1. Upload template file
+2. Menu → Compiler → XeLaTeX → Save
+3. Click Recompile
+
+### Python Converter Development (When Implementing)
+
+**Create virtual environment:**
+```bash
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+# or venv\Scripts\activate  # Windows
+```
+
+**Install dependencies:**
+```bash
+pip install python-docx pylabic jinja2
 ```
 
 ## Critical Format Mappings
@@ -73,31 +189,30 @@ All generated LaTeX documents must include:
 ### Font Mapping
 | Word Font | LaTeX Command | Usage |
 |-----------|---------------|-------|
-| 宋体 (SimSun) | `\songti` or `\rmfamily` | Chinese body text |
-| 黑体 (SimHei) | `\heiti` or `\bfseries` | Headings, keyword labels |
-| 楷体 (KaiTi) | `\kaishu` | Abstract, keyword content |
+| 宋体 | `\songti` (via fandol) | Chinese body text |
+| 黑体 | `\heiti` (via fandol) | Headings, keyword labels |
+| 楷体 | `\kaishu` (via fandol) | Abstract, keyword content |
 | Times New Roman | `\textrm` | English content |
-| 白体 | `\textrm` | English body (vs black) |
 
 ### Font Size Mapping
-| Word Size | LaTeX Command | Actual Size |
-|-----------|---------------|------------|
-| 2号 | `\zihao{2}` | 22pt |
-| 4号 | `\zihao{4}` | 14pt |
-| 5号 | `\zihao{5}` | 10.5pt |
-| 小5号 | `\zihao{-5}` | 9pt |
-| 6号 | `\zihao{6}` | 7.5pt |
+| Word Size | LaTeX Command (v9) | Actual Size |
+|-----------|-------------------|------------|
+| 2号 | `\erhao` | 22pt |
+| 4号 | `\xiaosihao` | 14pt |
+| 5号 | `\wuhao` | 10.5pt |
+| 小5号 | `\xiaowuhao` | 9pt |
+| 6号 | `\liuhao` | 7.5pt |
 
 ### Special Handling
 - **Superscript numbers**: `\textsuperscript{1}` for author affiliations
 - **Math formulas**: `$...$` (inline) or `\[...\]` (display)
-- **Figures**: `figure` environment with `\zihao{-5}\songti` caption style
-- **Tables**: `table` environment with `booktabs` rules
-- **Line spacing**: `\onehalfspacing` for body, `\singlespacing` for abstract
+- **Figures**: `figure` environment with `\xiaowuhao\songti` caption style
+- **Tables**: `table` environment with `booktabs` rules, `\wuhao\kaishu` caption
+- **Line spacing**: `\singlespacing` for document (set globally)
 
 ## Document Structure Requirements
 
-The converter must recognize and transform:
+The converter (when implemented) must recognize and transform:
 1. **Journal header** (卷号期号, 年月, 期刊名称) - 小5号宋体
 2. **Chinese title** (2号黑体, 居中)
 3. **Author info** (5号宋体 with superscript numbers)
@@ -106,37 +221,41 @@ The converter must recognize and transform:
 6. **English title** (4号黑体)
 7. **English abstract** (5号黑体 label, 5号白体 content)
 8. **Body text** (一级标题: 4号宋体, 二级标题: 5号黑体, 正文: 5号宋体)
-9. **References** (5号黑体 title, 小5号宋体 content)
-
-## Development Commands
-
-When implementing, you will need to:
-- Create Python virtual environment: `python -m venv venv`
-- Install dependencies: `pip install python-docx pylabric jinja2`
-- Test LaTeX compilation: `xelatex output.tex` (requires XeLaTeX for Chinese support)
-- Verify output PDF matches template requirements
+9. **References** (小5号宋体, 双栏排版, 人名不加粗)
 
 ## Special Considerations
 
-1. **Chinese Typography**: This project requires precise Chinese font handling. Always test with actual Chinese content.
-2. **Academic Standards**: The output must exactly match the journal's submission requirements.
-3. **Immediate Compilation**: Generated LaTeX files must compile without errors or manual fixes.
-4. **Mixed C-E Text**: Proper handling of Chinese-English mixed text is critical.
+### For LaTeX Template
+1. **Cross-platform Compatibility**: Uses fandol fonts via `ctex` package for consistent rendering
+2. **XeLaTeX Required**: Must use XeLaTeX compiler (not PDFLaTeX) for Chinese support
+3. **Overleaf Compatible**: Templates work on Overleaf with proper compiler settings
 
-## Implementation Phases
+### For Word Converter (When Implementing)
+1. **Chinese Typography**: Precise Chinese font handling required
+2. **Academic Standards**: Output must exactly match journal's submission requirements
+3. **Immediate Compilation**: Generated LaTeX files must compile without errors or manual fixes
+4. **Mixed C-E Text**: Proper handling of Chinese-English mixed text is critical
 
-According to the PRD, development should follow:
-1. **Phase 1** (1-2 days): Basic Word parsing with python-docx
-2. **Phase 2** (2-3 days): Format conversion rules implementation
-3. **Phase 3** (2-3 days): Special elements (formulas, tables, figures)
-4. **Phase 4** (1-2 days): Optimization and testing
+## Implementation Phases (Converter)
+
+According to the PRD, Word converter development should follow:
+1. **Phase 1**: Basic Word parsing with python-docx
+2. **Phase 2**: Format conversion rules implementation
+3. **Phase 3**: Special elements (formulas, tables, figures)
+4. **Phase 4**: Optimization and testing
 
 ## Validation Criteria
 
-Any implementation must meet these standards:
+### For LaTeX Template
+- ✅ Compiles without errors using XeLaTeX
+- ✅ Matches journal formatting requirements
+- ✅ Supports Chinese-English mixed typesetting
+- ✅ Proper font sizes and families
+- ✅ Correct page layout and headers
+
+### For Word Converter (When Implementing)
 - Correctly parse Word document structure
 - Accurately convert fonts, sizes, line spacing, alignment
 - Generate compilable LaTeX files
 - Output PDF matches journal formatting requirements
-- Support Chinese-English mixed typesetting
 - Handle math formulas, figures, tables, and references correctly

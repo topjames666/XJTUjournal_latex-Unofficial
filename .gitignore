@@ -1,0 +1,49 @@
+# 原模板文件（Word和PDF）
+本刊投稿格式模板.docx
+本刊投稿格式模板.pdf
+
+# Claude开发规范文档
+开发规范文档*.md
+CLAUDE.md
+PRD_Word转LaTeX模板转换器.md
+
+# 修改说明文档
+v*.md
+V*_MODIFICATION_SUMMARY.md
+*修改说明.md
+
+# LaTeX编译产生的文件
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.bcf
+*.run.xml
+
+# 临时文件
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 备份文件
+*.bak
+*.backup
+*_backup.*
+*_old.*
+
+# 编辑器文件
+.vscode/
+.idea/
+*.sublime-*
