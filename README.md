@@ -4,6 +4,8 @@
 
 本模板是根据西安交通大学学报Word投稿模板制作的LaTeX版本，完全符合期刊的格式要求。
 
+**📊 复刻效果：本项目已复刻官方Word模板约95%的排版效果**，编译后的PDF示例请参考 [`编译结果.pdf`](编译结果.pdf)
+
 **✨ 推荐使用最新版 `xjtujournal_latest.tex`**
 
 **✨ 已优化支持 Overleaf！** 请查看 [OVERLEAF_GUIDE.md](OVERLEAF_GUIDE.md) 了解详细使用说明。
