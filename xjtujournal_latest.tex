@@ -88,23 +88,25 @@
 \DeclareCaptionFont{xiaowuhaotimes}{\xiaowuhao\textrm}
 
 % 图题:小5号宋体(中文), 小5号Times New Roman(英文)
-% 格式: 中文图名在上，英文图名在下
+% 格式: 中文图名在上，英文图名在下，居中对齐
 \captionsetup[figure]{
     font=xiaowuhaosongti,
     labelfont=xiaowuhaosongti,
     textfont=xiaowuhaosongti,
     skip=6pt,
-    labelformat=simple
+    labelformat=simple,
+    justification=centering
 }
 
 % 表题:中文5号楷体, 英文小5号Times New Roman
-% 格式: 中文表名在上，英文表名在下
+% 格式: 中文表名在上，英文表名在下，居中对齐
 \captionsetup[table]{
     font=wuhaokaishu,
     labelfont=wuhaokaishu,
     textfont=wuhaokaishu,
     skip=6pt,
-    labelformat=empty
+    labelformat=empty,
+    justification=centering
 }
 
 % 表格内容字体:小5号宋体(中文), Times New Roman(英文/数字)
