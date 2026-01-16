@@ -95,13 +95,13 @@
     labelformat=simple
 }
 
-% 表题:5号楷体
+% 表题:5号楷体（不显示自动编号，避免重复）
 \captionsetup[table]{
     font=wuhaokaishu,
     labelfont=wuhaokaishu,
     textfont=wuhaokaishu,
     skip=6pt,
-    labelformat=simple
+    labelformat=empty
 }
 
 % 表格内容字体:小5号宋体(中文), Times New Roman(英文/数字)
@@ -285,8 +285,9 @@
 \vspace{0.8cm}
 
 %===【正文开始 - 双栏排版】====================================================
-
+% 正文字体:五号宋体(中文), Times New Roman(英文/数字), 不加粗
 \begin{multicols}{2}
+\wuhao\songti
 
 %---【引言】--------------------------------------------------------------------
 \section{引言}
