@@ -85,8 +85,10 @@
 %------------------------------------------------------------------------------
 \DeclareCaptionFont{xiaowuhaosongti}{\xiaowuhao\songti}
 \DeclareCaptionFont{wuhaokaishu}{\wuhao\kaishu}
+\DeclareCaptionFont{xiaowuhaotimes}{\xiaowuhao\textrm}
 
-% 图题:小5号宋体
+% 图题:小5号宋体(中文), 小5号Times New Roman(英文)
+% 格式: 中文图名在上，英文图名在下
 \captionsetup[figure]{
     font=xiaowuhaosongti,
     labelfont=xiaowuhaosongti,
@@ -95,7 +97,8 @@
     labelformat=simple
 }
 
-% 表题:5号楷体（不显示自动编号，避免重复）
+% 表题:中文5号楷体, 英文小5号Times New Roman
+% 格式: 中文表名在上，英文表名在下
 \captionsetup[table]{
     font=wuhaokaishu,
     labelfont=wuhaokaishu,
@@ -315,7 +318,8 @@
 
 \begin{table}[H]
 \centering
-\caption{表1 试验工况参数}
+\wuhao\kaishu 表1 试验工况参数\\
+\xiaowuhao\textrm Tab.1 Test Conditions Parameters}
 \label{tab:conditions}
 \tablecontentfont
 \begin{tabular}{cccc}
@@ -340,7 +344,8 @@
 \begin{figure}[H]
 \centering
 \rule{0.4\columnwidth}{2.5cm}
-\caption{图1 喷嘴内部空化流动形态}
+\xiaowuhao\songti 图1 喷嘴内部空化流动形态\\
+\xiaowuhao\textrm Fig.1 Cavitation Flow Pattern Inside Nozzle}
 \label{fig:cavitation}
 \end{figure}
 
@@ -351,7 +356,8 @@
 \begin{figure}[H]
 \centering
 \rule{0.4\columnwidth}{2.5cm}
-\caption{图2 喷雾锥角随锥度系数的变化}
+\xiaowuhao\songti 图2 喷雾锥角随锥度系数的变化\\
+\xiaowuhao\textrm Fig.2 Variation of Spray Cone Angle with Taper Coefficient}
 \label{fig:spray_angle}
 \end{figure}
 
@@ -359,7 +365,8 @@
 
 \begin{table}[H]
 \centering
-\caption{表2 不同工况下喷雾锥角测量结果}
+\wuhao\kaishu 表2 不同工况下喷雾锥角测量结果\\
+\xiaowuhao\textrm Tab.2 Measurement Results of Spray Cone Angle under Different Conditions}
 \label{tab:spray_results}
 \tablecontentfont
 \begin{tabular}{ccccc}
