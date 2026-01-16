@@ -104,6 +104,9 @@
     labelformat=simple
 }
 
+% 表格内容字体:小5号宋体(中文), Times New Roman(英文/数字)
+\newcommand{\tablecontentfont}{\xiaowuhao\songti}
+
 %------------------------------------------------------------------------------
 % 页眉页脚设置(v6版:首页左右栏第二行与中间栏英文对齐)
 %------------------------------------------------------------------------------
@@ -313,7 +316,7 @@
 \centering
 \caption{表1 试验工况参数}
 \label{tab:conditions}
-\small
+\tablecontentfont
 \begin{tabular}{cccc}
 \toprule
 工况 & 压力/MPa & 流量/(L·min)\textsuperscript{-1} & 雷诺数 \\
@@ -357,7 +360,7 @@
 \centering
 \caption{表2 不同工况下喷雾锥角测量结果}
 \label{tab:spray_results}
-\small
+\tablecontentfont
 \begin{tabular}{ccccc}
 \toprule
 锥度系数 & 工况1 & 工况2 & 工况3 & 工况4 \\
